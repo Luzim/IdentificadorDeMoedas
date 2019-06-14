@@ -10,10 +10,18 @@ class Manipulate_images(object):
     def identify_fist_pixel(self,h,s,v):
         HSV_pixel = np.uint8([[[h[0][0],s[0][0],v[0][0] ]]])
         return HSV_pixel
-    def remove_allDiferent_from_firstPixel(self,pixel,image):
+    def remove_allDiferent_from_firstPixel(self,pixel,image,case):
         for x in range(image.shape[0]):
             for y in range(image.shape[1]):
-                if image[x][y] == pixel:
-                    image[x][y] = 255
+                if case == 'h':
+                    if pixel[0][0] == image[x][y] :
+                        image[x][y] = 0
+                elif case == 's':
+                    if pixel[0][1] == image[x][y] :
+                        image[x][y] = 0
+                elif case == 'v':
+                    if pixel[0][2] == image[x][y] :
+                        image[x][y] = 0
         return image
+    
         
