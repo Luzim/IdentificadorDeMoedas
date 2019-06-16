@@ -23,5 +23,32 @@ class Manipulate_images(object):
                     if pixel[0][2] == image[x][y] :
                         image[x][y] = 0
         return image
+    def transform_black_white(self,hsv_image):
+        for x in range(hsv_image.shape[0]):
+            for y in range(hsv_image.shape[1]):
+                if not np.array_equal(hsv_image[x][y],[0,0,0]):
+                    hsv_image[x][y] = np.uint8([0,0,255])
+        return hsv_image
+    def identify_coins(self,image):
+        dict_coins = {}
+        att = 'Black'
+        coin = 0
+        for x in range(image.shape[0]):
+            coins = []
+            for y in range(image.shape[1]):
+                if np.array_equal(image[x][y],[0,0,255]) and (att=='Black'):
+                    att='White'
+                    coins.append([x,y])
+                elif np.array_equal(image[x][y],[0,0,255]) and (att=='White'):
+                    coins.append([x,y])
+                elif np.array_equal(image[x][y],[0,0,0]) and (att=='White'):
+                    att='Black'
+                    dict_coins[coin] = coins
+                    coins = []
+            att='Black'
+
+                    
+                
+
     
         
