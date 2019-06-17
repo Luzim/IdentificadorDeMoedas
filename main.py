@@ -22,7 +22,9 @@ def main():
     img_aux = image.transform_black_white(img_aux)
     #Transformando as moedas em branco
     #Identificando Quantidade de Moedas - IMPLEMENTANDO
-    image.identify_coins(img_aux)
+    moedas_identifyed = image.identify_coins(img_aux)
+    for key in moedas_identifyed:
+        print(moedas_identifyed[key])
     #Identificando Quantidade de Moedas - IMPLEMENTANDO
     #Contando diâmetro de cada moeda:
     img2 = cv2.cvtColor(img_aux,cv2.COLOR_HSV2RGB)

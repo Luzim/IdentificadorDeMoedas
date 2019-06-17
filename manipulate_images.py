@@ -30,22 +30,20 @@ class Manipulate_images(object):
                     hsv_image[x][y] = np.uint8([0,0,255])
         return hsv_image
     def identify_coins(self,image):
-        dict_coins = {}
-        att = 'Black'
-        coin = 0
-        for x in range(image.shape[0]):
-            coins = []
-            for y in range(image.shape[1]):
-                if np.array_equal(image[x][y],[0,0,255]) and (att=='Black'):
-                    att='White'
-                    coins.append([x,y])
-                elif np.array_equal(image[x][y],[0,0,255]) and (att=='White'):
-                    coins.append([x,y])
-                elif np.array_equal(image[x][y],[0,0,0]) and (att=='White'):
-                    att='Black'
-                    dict_coins[coin] = coins
-                    coins = []
-            att='Black'
+        h,s,v = cv2.split(image)
+        saida = cv2.connectedComponentsWithStats(v)
+        dict_moedas = {}
+        for i in range(1,saida[0]):
+            dic_aux = {}
+            dict_moedas[i] = []
+            dic_aux['id_coin'] = i
+            dic_aux['centroid'] = saida[3][i]
+            dic_aux['left_pixel'] = saida[2][i][0]
+            dic_aux['right_pixel'] = saida[2][i][2] + saida[2][i][0]
+            dic_aux['pixels_total'] = saida[2][i][4]
+            dic_aux['diameter_x'] = saida[2][i][2]
+            dict_moedas[i].append(dic_aux)
+        return dict_moedas
 
                     
                 
