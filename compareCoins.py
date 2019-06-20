@@ -2,15 +2,15 @@ from operator import itemgetter
 ##CODIGO NÃO FUNCIONAL AINDA
 def mountListCoins():
 	coins = []
-	coinsName = ['1 centavo','5 centavos', '10 centavos','25 centavos']
+	coinsName = ['1 centavo','5 centavos'] #'10 centavos','25 centavos']
 	list_coins = []
 	coins.append(3.1415*((17.0/2.0)**2.0))
 	coins.append(3.1415*((22.0/2.0)**2.0))
-	coins.append(3.1415*((20.0/2.0)**2.0))
-	coins.append(3.1415*((25.0/2.0)**2.0))
+	#coins.append(3.1415*((20.0/2.0)**2.0))
+	#coins.append(3.1415*((25.0/2.0)**2.0))
 
-	for i in range(4):
-		for j in range(4):
+	for i in range(2):
+		for j in range(2):
 			aux_coin = (coinsName[i],coinsName[j])
 			escala_coin = coins[i]/coins[j]
 			list_coins.append((aux_coin,escala_coin))
