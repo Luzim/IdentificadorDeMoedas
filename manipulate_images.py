@@ -51,9 +51,9 @@ class Manipulate_images(object):
         count_max, count_min = 0,0
         proporcion = minN/float(maxX)
         for value in vector:
-            if (minN > proporcion * maxX) and (minN <=(maxX)):
+            if (proporcion >= 0.9):
                 return 0,0
-            elif (value> proporcion * maxX) and (value <=(maxX)):
+            elif (value/float(maxX) > 0.9):
                 count_max += 1
             
             else:
