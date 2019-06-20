@@ -44,6 +44,24 @@ class Manipulate_images(object):
             dic_aux['diameter_x'] = saida[2][i][2]
             dict_moedas[i].append(dic_aux)
         return dict_moedas
+    def compare_general(self,vector):
+        vector.sort()
+        maxX = max(vector)
+        minN = min(vector)
+        count_max, count_min = 0,0
+        proporcion = minN/float(maxX)
+        for value in vector:
+            if (minN > proporcion * maxX) and (minN <=(maxX)):
+                return 0,0
+            elif (value> proporcion * maxX) and (value <=(maxX)):
+                count_max += 1
+            
+            else:
+                count_min += 1
+        return count_max,count_min
+
+        
+
 
                     
                 
