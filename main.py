@@ -11,11 +11,10 @@ def main():
     #kernel = np.uint8(kernel)
     h,s,v = image.open_and_convert_rgb('./images/',sys.argv[1]) # Convertendo imagem original para HSV
     h_first_pixel = image.identify_fist_pixel(h,s,v) # Fundo
-    h = image.remove_allDiferent_from_firstPixel(h_first_pixel[0],h,'h')
-    s = image.remove_allDiferent_from_firstPixel(h_first_pixel[0],s,'s')
-    v = image.remove_allDiferent_from_firstPixel(h_first_pixel[0],v,'v')
+    img = cv2.merge((h,s,v))
+    img = image.remove_allDiferent_from_firstPixel_rgb(h_first_pixel,img)
     # Mediana para retirar ruídos
-    
+    h,s,v = cv2.split(img)
     h = cv2.medianBlur(h,7) 
     s = cv2.medianBlur(s,7)
     v = cv2.medianBlur(v,7)
