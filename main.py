@@ -87,22 +87,15 @@ def main():
     result_copper = []
     result_silver = []
     for key in moedas_identifyed:
-        if ((moedas_identifyed[key][0]['centroid_color'] >= 15) and (moedas_identifyed[key][0]['centroid_color'] <= 23)):
-            if ((moedas_identifyed[key][0]['borderL'] >= 15) and (moedas_identifyed[key][0]['borderL'] <= 23)):
-                if ((moedas_identifyed[key][0]['borderR'] >= 15) and (moedas_identifyed[key][0]['borderR'] <= 23)):
-                    result_gold.append(moedas_identifyed[key][0]['diameter_x'])
-                else:
-                    result_silver.append(moedas_identifyed[key][0]['diameter_x'])
-            else:
+        if ((moedas_identifyed[key][0]['centroid_color_r'] >= 180) and (moedas_identifyed[key][0]['centroid_color_r'] <= 210)):
+            if ((moedas_identifyed[key][0]['centroid_color_g'] >= 180) and (moedas_identifyed[key][0]['centroid_color_g'] <= 210)):
                 result_silver.append(moedas_identifyed[key][0]['diameter_x'])
-                
-        elif((moedas_identifyed[key][0]['centroid_color'] >= 8) and (moedas_identifyed[key][0]['centroid_color'] <= 14)):
-            if((moedas_identifyed[key][0]['borderL'] >= 8) and (moedas_identifyed[key][0]['borderL'] <= 14)):
-                result_copper.append(moedas_identifyed[key][0]['diameter_x'])
-            else:
-                result_silver.append(moedas_identifyed[key][0]['diameter_x'])
-        else:
-            result_silver.append(moedas_identifyed[key][0]['diameter_x'])
+        elif ((moedas_identifyed[key][0]['centroid_color_r'] >= 230) and (moedas_identifyed[key][0]['centroid_color_r'] <= 255)):
+            if ((moedas_identifyed[key][0]['centroid_color_g'] >= 210) and (moedas_identifyed[key][0]['centroid_color_g'] <= 230)):
+                result_gold.append(moedas_identifyed[key][0]['diameter_x'])
+        elif ((moedas_identifyed[key][0]['centroid_color_r'] >= 230) and (moedas_identifyed[key][0]['centroid_color_r'] <= 255)):
+            if ((moedas_identifyed[key][0]['centroid_color_g'] >= 180) and (moedas_identifyed[key][0]['centroid_color_g'] <= 210)):
+                result_gold.append(moedas_identifyed[key][0]['diameter_x'])
     
     result = 0
     if len(result_gold) >=2:
