@@ -7,6 +7,11 @@ class Manipulate_images(object):
         img = cv2.cvtColor(bgr_img,cv2.COLOR_BGR2HSV)
         h,s,v = cv2.split(img)
         return h,s,v
+    def open_and_convert_rgb(self, path,file):
+        bgr_img = cv2.imread(path+file)
+        img = cv2.cvtColor(bgr_img,cv2.COLOR_BGR2RGB)
+        r,g,b = cv2.split(img)
+        return r,g,b
     def identify_fist_pixel(self,h,s,v):
         HSV_pixel = np.uint8([[[h[0][0],s[0][0],v[0][0] ]]])
         return HSV_pixel
