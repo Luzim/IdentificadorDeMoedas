@@ -91,25 +91,28 @@ def main():
             if ((moedas_identifyed[key][0]['centroid_color_g'] >= 180) and (moedas_identifyed[key][0]['centroid_color_g'] <= 210)):
                 result_silver.append(moedas_identifyed[key][0]['diameter_x'])
         elif ((moedas_identifyed[key][0]['centroid_color_r'] >= 230) and (moedas_identifyed[key][0]['centroid_color_r'] <= 255)):
-            if ((moedas_identifyed[key][0]['centroid_color_g'] >= 210) and (moedas_identifyed[key][0]['centroid_color_g'] <= 230)):
+            if ((moedas_identifyed[key][0]['centroid_color_g'] > 210) and (moedas_identifyed[key][0]['centroid_color_g'] <= 230)):
                 result_gold.append(moedas_identifyed[key][0]['diameter_x'])
-        elif ((moedas_identifyed[key][0]['centroid_color_r'] >= 230) and (moedas_identifyed[key][0]['centroid_color_r'] <= 255)):
-            if ((moedas_identifyed[key][0]['centroid_color_g'] >= 180) and (moedas_identifyed[key][0]['centroid_color_g'] <= 210)):
-                result_gold.append(moedas_identifyed[key][0]['diameter_x'])
-    
+            elif ((moedas_identifyed[key][0]['centroid_color_g'] >= 180) and (moedas_identifyed[key][0]['centroid_color_g'] <= 210)):
+                result_copper.append(moedas_identifyed[key][0]['diameter_x'])
+        elif ((moedas_identifyed[key][0]['centroid_color_r'] >= 155) and (moedas_identifyed[key][0]['centroid_color_r'] <= 175)):
+            if ((moedas_identifyed[key][0]['centroid_color_g'] >= 110) and (moedas_identifyed[key][0]['centroid_color_g'] <= 130)):
+                result_copper.append(moedas_identifyed[key][0]['diameter_x'])
+    	
     result = 0
     if len(result_gold) >=2:
         valor_25,valor_10 = image.compare_general(result_gold)
         result = result + valor_10*0.1 + valor_25*0.25
-#        print(valor_25,valor_10)
+        print 'oi', valor_25,valor_10
+    print 'xdxd', result_copper
     if len(result_copper)>=2:
         valor_5,valor_01 = image.compare_general(result_copper)
         result = result + valor_5*0.05 + valor_01*0.01
- #       print(valor_5,valor_01)
+        print'alo', valor_5,valor_01
     if len(result_silver)>=2:
         valor_1,valor_50 = image.compare_general(result_silver)
         result = result + valor_1*1.0 + valor_50*0.5
-  #      print(valor_1,valor_50)
+        print'eroi', valor_1,valor_50
     print(result)
         
 
