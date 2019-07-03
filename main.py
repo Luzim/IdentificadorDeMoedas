@@ -117,6 +117,7 @@ def main():
     #Contando diâmetro de cada moeda:
     img2 = cv2.cvtColor(opening,cv2.COLOR_HSV2RGB)
     r,g,b = cv2.split(opening)
+    plt.title('R$ '+str(result))
     plt.imshow(img)
     plt.xticks([]), plt.yticks([])  # to hide tick values on X and Y axis
     plt.show()
